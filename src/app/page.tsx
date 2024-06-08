@@ -8,7 +8,7 @@ export default async function Home() {
 
     return (
         <main>
-            {session ? (
+            {session && session.user ? (
                 <div className="h-screen w-screen flex flex-col">
                     <MessageFeed />
                     <MessageInput />
