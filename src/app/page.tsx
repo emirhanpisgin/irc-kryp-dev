@@ -1,20 +1,20 @@
-import { auth } from "@/lib/auth";
+import { Button } from "@/components/ui/button";
+import { auth, signIn } from "@/lib/auth";
+import SignIn from "./sign-in";
 
 export default async function Home() {
     const session = await auth();
 
     return (
-        <main className="grid place-items-center h-screen">
+        <main>
             {session ? (
                 <div>
 
                 </div>
             ) : (
-                <div>
+                <div className="flex flex-col items-center gap-2">
                     Lütfen mesaj gönderebilmek veya görmek için giriş yapın.
-                    <div>
-
-                    </div>
+                    <SignIn />
                 </div>
             )}
         </main>
