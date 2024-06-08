@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={cn(
-                "h-screen bg-background font-sans overflow-hidden antialiased grid place-items-center text-black",
+                "h-screen bg-background font-sans overflow-hidden antialiased grid place-items-center text-black dark:text-white",
                 fontSans.variable
             )}>
                 <Providers>

@@ -21,7 +21,7 @@ export default function MessageInput() {
     }
 
     return (
-        <form action={handleMessageSubmit} className="p-3 border-t-2 flex gap-3 bg-white">
+        <form action={handleMessageSubmit} className="p-3 border-t-2 flex gap-3">
             <Input maxLength={200} disabled={pending} ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)} name="message" required placeholder="Mesaj..." className="mx-auto" />
             <Button disabled={pending} type="submit">
                 {pending ? <LoadingIcon className="size-12 p-2" /> : "Gönder"}

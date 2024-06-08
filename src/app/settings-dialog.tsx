@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useSession } from "next-auth/react";
-import React, { useState, useTransition } from 'react';
+import React, { useTransition } from 'react';
 import type { SVGProps } from 'react';
 import { changeNameAction } from "./actions";
+import { useTheme } from "next-themes";
 
 export default function SettingsDialog() {
     const { data, status } = useSession();
-    console.log(data);
+    const { setTheme } = useTheme();
     const [pending, startTransition] = useTransition();
 
     function handleNameChange(formData: FormData) {
@@ -33,6 +34,17 @@ export default function SettingsDialog() {
                         {pending ? <LoadingIcon className="size-12" /> : <SaveIcon className="size-12" />}
                     </Button>
                 </form>
+                <div className="flex flex-col font-semibold gap-3">
+                    Özelleştir
+                    <div className="space-x-2">
+                        <Button onClick={() => setTheme("light")}>
+                            Açık
+                        </Button>
+                        <Button onClick={() => setTheme("dark")}>
+                            Koyu
+                        </Button>
+                    </div>
+                </div>
             </DialogContent>
         </Dialog>
 
