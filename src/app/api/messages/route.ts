@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
 					content: message.content,
 					createdAt: message.createdAt,
 				}))
-				.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+				.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
 		)
 	);
 }
