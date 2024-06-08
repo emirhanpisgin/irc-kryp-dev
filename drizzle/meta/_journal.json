@@ -64,6 +64,13 @@
       "when": 1717877139837,
       "tag": "0008_sparkling_bishop",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1717878846002,
+      "tag": "0009_dazzling_brood",
+      "breakpoints": true
     }
   ]
 }

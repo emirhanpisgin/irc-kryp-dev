@@ -23,6 +23,7 @@ export async function sendMessageAction(messageContent: string) {
 		id: message.id,
 		username: session.user?.name,
 		content: messageContent,
+		createdAt: message.createdAt,
 	});
 }
 
@@ -45,7 +46,10 @@ export async function changeNameAction(name: string) {
 
 	if (!session) return;
 
-	await db.update(users).set({
-		name,
-	}).where(eq(users.id, session.user?.id!));
+	await db
+		.update(users)
+		.set({
+			name,
+		})
+		.where(eq(users.id, session.user?.id!));
 }

@@ -13,9 +13,10 @@ interface MessageProviderProps {
 }
 
 interface Message {
-    id: string,
-    username: string,
-    content: string
+    id: string;
+    username: string;
+    content: string;
+    createdAt: string;
 }
 
 const MessageProvider: React.FC<MessageProviderProps> = ({ children }) => {

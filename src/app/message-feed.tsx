@@ -4,6 +4,7 @@ import { useEffect, useRef, useContext } from 'react';
 import { MessageContext } from "@/components/context/message-context";
 import type { SVGProps } from 'react';
 import { deleteMessageAction } from './actions';
+import { getMessageTimestamp } from '@/lib/utils';
 
 export default function MessageFeed({
     isAdmin
@@ -25,6 +26,7 @@ export default function MessageFeed({
         <div className="flex-1 overflow-y-auto">
             {messages.map((message) => (
                 <div key={message.id} className="whitespace-pre-wrap relative w-full break-words px-2 py-1 group border-t-2">
+                    <div className="inline text-sm mr-3">{getMessageTimestamp(new Date(message.createdAt))}</div>
                     <div className="inline font-semibold">{`${message.username}: `}</div>
                     <div className="inline">
                         {message.content}
