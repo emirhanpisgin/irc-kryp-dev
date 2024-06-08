@@ -15,6 +15,13 @@
       "when": 1717801323430,
       "tag": "0001_sleepy_energizer",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1717806261654,
+      "tag": "0002_mean_wraith",
+      "breakpoints": true
     }
   ]
 }

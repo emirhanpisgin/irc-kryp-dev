@@ -1,12 +1,5 @@
-import { boolean, timestamp, pgTable, text, primaryKey, integer } from "drizzle-orm/pg-core";
-import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
+import { boolean, timestamp, pgTable, text, primaryKey, integer, serial, uuid } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
-
-const connectionString = "postgres://postgres:postgres@localhost:5432/drizzle";
-const pool = postgres(connectionString, { max: 1 });
-
-export const db = drizzle(pool);
 
 export const users = pgTable("user", {
 	id: text("id")
@@ -84,3 +77,13 @@ export const authenticators = pgTable(
 		}),
 	})
 );
+
+export const messages = pgTable("message", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => crypto.randomUUID()),
+	userId: text("userId")
+		.notNull()
+		.references(() => users.id, { onDelete: "cascade" }),
+	content: text("content").notNull(),
+});
