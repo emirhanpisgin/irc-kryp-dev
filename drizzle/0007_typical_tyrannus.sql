@@ -1,0 +1,1 @@
+ALTER TABLE "message" ADD COLUMN "createdAt" date DEFAULT now();

@@ -43,6 +43,27 @@
       "when": 1717861669481,
       "tag": "0005_yielding_risque",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1717876627510,
+      "tag": "0006_natural_winter_soldier",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1717876773117,
+      "tag": "0007_typical_tyrannus",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1717877139837,
+      "tag": "0008_sparkling_bishop",
+      "breakpoints": true
     }
   ]
 }

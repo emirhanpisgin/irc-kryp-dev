@@ -13,11 +13,14 @@ export async function GET(req: NextRequest) {
 
 	return new Response(
 		JSON.stringify(
-			lastMessages.map(({ message, user }) => ({
-				id: message.id,
-				username: user?.name,
-				content: message.content,
-			})).reverse()
+			lastMessages
+				.map(({ message, user }) => ({
+					id: message.id,
+					username: user?.name,
+					content: message.content,
+					createdAt: message.createdAt,
+				}))
+				.sort((a, b) => new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime())
 		)
 	);
 }

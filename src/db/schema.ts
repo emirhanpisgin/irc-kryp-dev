@@ -1,4 +1,4 @@
-import { boolean, timestamp, pgTable, text, primaryKey, integer, serial, uuid } from "drizzle-orm/pg-core";
+import { boolean, timestamp, pgTable, text, primaryKey, integer, serial, uuid, date } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "next-auth/adapters";
 
 export const users = pgTable("user", {
@@ -86,4 +86,5 @@ export const messages = pgTable("message", {
 		.notNull()
 		.references(() => users.id, { onDelete: "cascade" }),
 	content: text("content").notNull(),
+	createdAt: date("createdAt", { mode: "string" }).notNull().defaultNow(),
 });
