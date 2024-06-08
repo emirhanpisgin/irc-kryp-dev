@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Providers from "@/components/providers";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -21,10 +22,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={cn(
-                "min-h-screen bg-background font-sans antialiased grid place-items-center text-black",
+                "h-screen bg-background font-sans overflow-hidden antialiased grid place-items-center text-black",
                 fontSans.variable
             )}>
-                {children}
+                <Providers>
+                    {children}
+                </Providers>
             </body>
         </html>
     );
