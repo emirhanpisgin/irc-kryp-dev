@@ -29,7 +29,7 @@ const MessageProvider: React.FC<MessageProviderProps> = ({ children }) => {
         pusherClient.subscribe("main-channel");
 
         const handleMessageReceived = (message: Message) => {
-            setMessages(prevMessages => [...prevMessages, message]);
+            setMessages(prevMessages => [message, ...prevMessages]);
         };
 
         const handleMessageDeleted = (messageId: string) => {
