@@ -74,3 +74,15 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+::-webkit-scrollbar {
+	@apply w-2 rounded-lg;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-primary-foreground;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply rounded-lg bg-secondary-foreground;
+}

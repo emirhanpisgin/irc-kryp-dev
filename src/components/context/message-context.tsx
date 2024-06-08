@@ -22,24 +22,32 @@ const MessageProvider: React.FC<MessageProviderProps> = ({ children }) => {
     const [messages, setMessages] = useState<Message[]>([]);
 
     useEffect(() => {
-        getPreviousMessages();
-        
+        if (messages.length === 0) {
+            getPreviousMessages();
+        }
+
         pusherClient.subscribe("main-channel");
 
         const handleMessageReceived = (message: Message) => {
             setMessages(prevMessages => [...prevMessages, message]);
         };
 
-        pusherClient.bind("main-event", handleMessageReceived);
+        const handleMessageDeleted = (messageId: string) => {
+            setMessages(prevMessages => [...prevMessages].filter((message) => message.id !== messageId));
+        }
+
+        pusherClient.bind("message-add", handleMessageReceived);
+        pusherClient.bind("message-delete", handleMessageDeleted);
 
         return () => {
             pusherClient.unsubscribe("main-channel");
-            pusherClient.unbind("main-event", handleMessageReceived);
+            pusherClient.unbind("message-add", handleMessageReceived);
+            pusherClient.unbind("message-delete", handleMessageDeleted);
         };
     }, []);
 
     async function getPreviousMessages() {
-        const { data, status } = await axios.get("/api/messages");
+        const { data } = await axios.get("/api/messages");
 
         if (!Array.isArray(data)) return;
 
