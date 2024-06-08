@@ -10,7 +10,7 @@ export default async function Home() {
         <main>
             {session && session.user ? (
                 <div className="h-screen w-screen flex flex-col">
-                    <MessageFeed />
+                    <MessageFeed isAdmin={session.user.id === process.env.ADMIN_USER_ID} />
                     <MessageInput />
                 </div>
             ) : (
