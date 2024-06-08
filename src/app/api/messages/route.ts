@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
 				id: message.id,
 				username: user?.name,
 				content: message.content,
-			}))
+			})).reverse()
 		)
 	);
 }
