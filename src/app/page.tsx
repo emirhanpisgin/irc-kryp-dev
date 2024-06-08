@@ -1,6 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { auth, signIn } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import SignIn from "./sign-in";
+import MessageFeed from "./message-feed";
+import MessageInput from "./message-input";
 
 export default async function Home() {
     const session = await auth();
@@ -8,8 +9,9 @@ export default async function Home() {
     return (
         <main>
             {session ? (
-                <div>
-
+                <div className="h-screen w-screen flex flex-col">
+                    <MessageFeed />
+                    <MessageInput />
                 </div>
             ) : (
                 <div className="flex flex-col items-center gap-2">
