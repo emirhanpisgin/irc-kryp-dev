@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useContext } from 'react';
-import { MessageContext } from "@/components/context/message-context";
+import { useEffect, useRef } from 'react';
+import { useMessages } from "@/components/context/message-context";
 import type { SVGProps } from 'react';
 import { deleteMessageAction } from './actions';
 import { getMessageTimestamp } from '@/lib/utils';
@@ -11,7 +11,7 @@ export default function MessageFeed({
 }: {
     isAdmin: boolean
 }) {
-    const { messages } = useContext(MessageContext)!;
+    const { messages } = useMessages();
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
