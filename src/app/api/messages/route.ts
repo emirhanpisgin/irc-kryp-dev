@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
 
 	if (!session) return new Response("Unauthorized");
 
-	const lastMessages = await db.select().from(messages).limit(20).leftJoin(users, eq(users.id, messages.userId));
+	const lastMessages = await db.select().from(messages).leftJoin(users, eq(users.id, messages.userId));
 
 	return new Response(
 		JSON.stringify(
